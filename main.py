@@ -1,4 +1,7 @@
 # William Hahn
+
+encoded_password = 0
+
 def encode_password(password):
     encoded_password = ""
     for digit in password:
@@ -6,6 +9,16 @@ def encode_password(password):
         encoded_password += encoded_digit
     return encoded_password
 
+def decode_password(encoded_password):
+    encoded_password = str(encoded_password)
+    decodedlist = []
+    decoded = ""
+    for i in range(len(encoded_password)):
+        i = (int(encoded_password[i]) - 3) % 10
+        decodedlist.append(str(i))
+    for i in range(len(decodedlist)):
+        decoded = decoded + str(decodedlist[i])
+    return decoded
 
 def main():
     while True:
@@ -21,7 +34,9 @@ def main():
             encoded_password = encode_password(password)
             print("Your password has been encoded and stored!\n")
         elif option == "2":
-            if
+            decoded_password = decode_password(encoded_password)
+            print(f"The encoded password is: {int(encoded_password)}, the decoded password is {int(decoded_password)}.")
+            print()
         elif option == "3":
             break
         else:
